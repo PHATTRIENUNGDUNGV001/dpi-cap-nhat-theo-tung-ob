@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1769e8">
+<meta name="description" content="Công cụ tham khảo độ nhạy, DPI và tối ưu trải nghiệm Free Fire. Không can thiệp dữ liệu game.">
+<link rel="manifest" href="manifest.webmanifest">
+<title>DPI CẬP NHẬT THEO TỪNG OB</title>
+<style>
+:root{--blue:#1769e8;--blue2:#eaf2ff;--ink:#17243a;--muted:#718096;--line:#e7edf5;--bg:#f5f8fc;--white:#fff;--green:#16865b;--shadow:0 12px 32px rgba(31,75,135,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{background:linear-gradient(135deg,#1769e8,#4b9cff);color:white;padding:24px 18px 28px;border-radius:0 0 28px 28px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{font-size:12px;font-weight:800;letter-spacing:1.2px;opacity:.9}.ver{font-size:11px;background:#ffffff25;padding:7px 10px;border-radius:30px}
+h1{font-size:24px;line-height:1.15;margin:20px 0 8px;max-width:330px}header p{font-size:13px;line-height:1.5;margin:0;opacity:.9;max-width:340px}
+.wrap{max-width:720px;margin:auto;padding:16px 14px 38px}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 14px}
+.tab{border:1px solid var(--line);background:white;border-radius:13px;padding:11px 6px;color:#617087;font-weight:700;font-size:12px}
+.tab.active{background:var(--blue2);color:var(--blue);border-color:#b9d2ff}
+.panel{background:white;border:1px solid var(--line);border-radius:20px;padding:17px;margin-bottom:13px;box-shadow:var(--shadow)}
+.panel h2{font-size:16px;margin:0 0 5px}.sub{color:var(--muted);font-size:12px;line-height:1.5;margin:0 0 15px}
+label{display:block;font-size:12px;font-weight:700;margin:12px 0 7px;color:#42516a}
+select,input[type=number],input[type=text]{width:100%;border:1px solid #dce5f1;border-radius:12px;padding:12px;background:#fbfdff;color:var(--ink);font-size:14px;outline:none}
+select:focus,input:focus{border-color:var(--blue)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+button.primary{width:100%;border:0;border-radius:13px;background:var(--blue);color:white;padding:13px;font-size:14px;font-weight:800;margin-top:15px}
+.result{background:#f0f6ff;border:1px solid #d7e7ff;border-radius:15px;padding:13px;margin-top:14px;display:none}
+.result.show{display:block}.resulttop{display:flex;justify-content:space-between;align-items:center;gap:10px}.result strong{color:#145bc7}
+.values{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}
+.value{background:white;border-radius:12px;padding:10px}.value small{display:block;color:var(--muted);font-size:11px}.value b{font-size:22px;color:var(--blue)}
+.note{font-size:11px;color:#66758b;line-height:1.55;margin:12px 0 0}
+.rangeRow{display:flex;justify-content:space-between;font-size:12px;font-weight:700}.rangeRow output{color:var(--blue)}
+input[type=range]{width:100%;accent-color:var(--blue);margin:13px 0}
+.actions{display:flex;gap:8px}.actions button{flex:1}
+.secondary{border:1px solid #dce5f1;background:white;border-radius:12px;padding:11px;color:#35506f;font-weight:700}
+.info{display:flex;gap:10px;background:#f7faff;border:1px solid #e1ecfb;border-radius:13px;padding:12px;margin-top:10px;font-size:12px;line-height:1.5;color:#52647d}
+.hidden{display:none!important}.foot{text-align:center;color:#8794a7;font-size:11px;line-height:1.6;padding:12px}
+.pill{display:inline-block;background:#eaf2ff;color:#1769e8;border-radius:30px;padding:5px 9px;font-size:10px;font-weight:800}
+@media(min-width:600px){h1{font-size:30px}.wrap{padding-top:22px}.values{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<header>
+ <div class="top"><div class="brand">AIM TOOLS · FREE FIRE</div><div class="ver" id="versionBadge">BẢN 1.0.0</div></div>
+ <h1>DPI CẬP NHẬT<br>THEO TỪNG OB</h1>
+ <p>Bộ công cụ tham khảo độ nhạy và DPI. Tùy chỉnh bên ngoài game, không đọc hay sửa dữ liệu Free Fire.</p>
+</header>
+<main class="wrap">
+ <div class="tabs">
+  <button class="tab active" data-tab="sensitivity">🎯 Độ nhạy</button>
+  <button class="tab" data-tab="dpi">📱 DPI</button>
+  <button class="tab" data-tab="system">⚡ Hệ thống</button>
+ </div>
+ <section id="sensitivity" class="tabpage">
+  <div class="panel">
+   <h2>Thiết lập hồ sơ ngắm</h2><p class="sub">Tạo bộ thông số khởi điểm để tự thử trong phòng tập. Đây không phải thiết lập chính thức từ Garena.</p>
+   <label for="style">Phong cách chơi</label>
+   <select id="style"><option value="balanced">Cân bằng – dễ kiểm soát</option><option value="flick">Vuốt nhanh – kéo tâm</option><option value="steady">Ổn định – ít văng tâm</option></select>
+   <div class="grid2">
+    <div><label for="weapon">Vũ khí thường dùng</label><select id="weapon"><option value="shotgun">Shotgun (M1887)</option><option value="smg">SMG (MP40)</option><option value="rifle">Súng trường</option><option value="mixed">Nhiều loại súng</option></select></div>
+    <div><label for="ob">Phiên bản OB</label><input id="ob" type="text" placeholder="Ví dụ: OB52" maxlength="16"></div>
+   </div>
+   <button class="primary" id="makeProfile">Tạo bộ độ nhạy tham khảo</button>
+   <div class="result" id="sensResult">
+    <div class="resulttop"><strong>Hồ sơ đề xuất</strong><span class="pill" id="profileTag">CÂN BẰNG</span></div>
+    <div class="values" id="sensValues"></div>
+    <p class="note">Dùng làm điểm bắt đầu, không có một bộ nhạy tối ưu cho mọi máy. Thử từng thay đổi nhỏ trong khu tập luyện và giữ lại mức dễ kiểm soát nhất.</p>
+    <div class="actions"><button class="secondary" id="copySens">Sao chép thông số</button><button class="secondary" id="saveSens">Lưu hồ sơ</button></div>
+   </div>
+  </div>
+  <div class="panel">
+   <h2>Chỉnh tinh độ nhạy thủ công</h2><p class="sub">Kéo thanh để ghi lại mức mày muốn thử. Ứng dụng không tự áp dụng vào game.</p>
+   <div id="sliders"></div>
+  </div>
+ </section>
+ <section id="dpi" class="tabpage hidden">
+  <div class="panel">
+   <h2>Trợ lý DPI</h2><p class="sub">DPI / độ rộng nhỏ nhất ảnh hưởng đến tỷ lệ hiển thị Android, không trực tiếp làm tăng tốc độ xử lý hay độ nhạy game.</p>
+   <div class="grid2">
+    <div><label for="currentDpi">DPI hiện tại (nếu biết)</label><input id="currentDpi" type="number" min="200" max="800" value="400"></div>
+    <div><label for="screenSize">Kích thước màn hình</label><select id="screenSize"><option value="small">Nhỏ / dưới 6.3 inch</option><option value="mid" selected>Trung bình / 6.3–6.7 inch</option><option value="large">Lớn / trên 6.7 inch</option></select></div>
+   </div>
+   <label for="dpiFeel">Mày muốn cảm giác nào?</label><select id="dpiFeel"><option value="normal">Dễ nhìn, dễ thao tác</option><option value="compact">Giao diện gọn hơn</option><option value="large">Chữ và nút lớn hơn</option></select>
+   <button class="primary" id="calcDpi">Tính mức thử an toàn</button>
+   <div class="result" id="dpiResult"><strong id="dpiHeadline"></strong><p id="dpiExplain" class="note"></p><div class="info">⚠️ Chỉ là gợi ý thử nghiệm. Hãy ghi lại mức cũ trước khi đổi. Thay đổi trong Cài đặt Android; không cấp quyền ADB hay quyền đặc biệt cho ứng dụng này.</div></div>
+  </div>
+ </section>
+ <section id="system" class="tabpage hidden">
+  <div class="panel">
+   <h2>Kiểm tra thiết bị</h2><p class="sub">Các bước tối ưu an toàn, không hứa hẹn tăng FPS ảo và không tự đóng ứng dụng khác.</p>
+   <div class="info">✓ Đóng ứng dụng không cần dùng trước khi chơi, nếu chúng đang tiêu tốn tài nguyên.</div>
+   <div class="info">✓ Bật chế độ Không làm phiền để tránh thông báo che màn hình.</div>
+   <div class="info">✓ Giữ đủ dung lượng trống và cập nhật Android / game từ nguồn chính thức.</div>
+   <div class="info">✓ Nếu máy nóng hoặc tụt khung hình, nghỉ cho máy nguội; tránh vừa sạc vừa chơi lâu.</div>
+   <div class="info">✓ Dùng kết nối mạng ổn định; ứng dụng này không thể sửa lỗi máy chủ hoặc đường truyền.</div>
+   <p class="note">Trình duyệt không được phép đọc chính xác RAM trống, CPU hay tự thay đổi cấu hình hệ thống. Vì vậy phiên bản 1.0 chỉ cung cấp checklist, không giả lập số liệu.</p>
+  </div>
+  <div class="panel">
+   <h2>Trung tâm cập nhật OB</h2><p class="sub">Ghi lại phiên bản game mà mày đang dùng để quản lý hồ sơ thử nghiệm.</p>
+   <label for="obCurrent">OB đang sử dụng</label><input id="obCurrent" type="text" placeholder="Nhập ví dụ: OB52">
+   <button class="primary" id="saveOb">Lưu phiên bản OB</button>
+   <p class="note" id="obSaved">Chưa ghi nhận phiên bản.</p>
+   <p class="note">Cập nhật dữ liệu OB tự động cần máy chủ và nguồn thông tin được xác minh. Bản 1.0 chưa tự kết nối hoặc tự tải cấu hình mới.</p>
+  </div>
+ </section>
+ <div class="foot">DPI CẬP NHẬT THEO TỪNG OB · v1.0.0<br>Ứng dụng độc lập, không liên kết hoặc được bảo trợ bởi Garena.</div>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
+ document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));
+ document.querySelectorAll('.tabpage').forEach(x=>x.classList.toggle('hidden',x.id!==b.dataset.tab));
+}));
+const labels=['Tổng quát','Red Dot','Ống ngắm 2x','Ống ngắm 4x','Ống ngắm súng ngắm','Nhìn xung quanh'];
+const baseVals={balanced:[185,180,175,165,90,150],flick:[195,190,185,175,100,165],steady:[170,165,160,150,80,140]};
+const weaponAdj={shotgun:[5,3,2,0,0,3],smg:[3,4,3,2,0,2],rifle:[0,0,2,4,0,0],mixed:[0,0,0,0,0,0]};
+let latest=[];
+function renderSliders(vals){$('sliders').innerHTML='';labels.forEach((n,i)=>{let v=vals[i];let row=document.createElement('div');row.innerHTML=`<div class="rangeRow"><span>${n}</span><output>${v}</output></div><input type="range" min="0" max="200" value="${v}">`;let r=row.querySelector('input'),o=row.querySelector('output');r.addEventListener('input',()=>o.value=r.value);$('sliders').append(row);});}
+renderSliders(baseVals.balanced);
+$('makeProfile').onclick=()=>{
+ let s=$('style').value,w=$('weapon').value;latest=baseVals[s].map((v,i)=>Math.max(0,Math.min(200,v+weaponAdj[w][i])));
+ $('profileTag').textContent=({balanced:'CÂN BẰNG',flick:'VUỐT NHANH',steady:'ỔN ĐỊNH'})[s];
+ $('sensValues').innerHTML=labels.map((n,i)=>`<div class="value"><small>${n}</small><b>${latest[i]}</b></div>`).join('');
+ $('sensResult').classList.add('show');renderSliders(latest);
+};
+$('copySens').onclick=async()=>{let t=labels.map((n,i)=>`${n}: ${latest[i]}`).join('\n');try{await navigator.clipboard.writeText(t);$('copySens').textContent='Đã sao chép';}catch(e){$('copySens').textContent='Không thể sao chép';}};
+$('saveSens').onclick=()=>{localStorage.setItem('dpi_ob_profile',JSON.stringify({ob:$('ob').value,values:latest}));$('saveSens').textContent='Đã lưu trên máy';};
+$('calcDpi').onclick=()=>{
+ let cur=Number($('currentDpi').value)||400,feel=$('dpiFeel').value;
+ let step=feel==='compact'?10:feel==='large'?-10:0;
+ let target=Math.max(300,Math.min(600,cur+step));
+ $('dpiHeadline').textContent=step===0?`Giữ mức hiện tại: ${cur}`:`Thử ${target} (thay đổi ${step>0?'+':''}${step})`;
+ $('dpiExplain').textContent=step===0?'Ưu tiên giữ nguyên nếu giao diện hiện tại dễ dùng. DPI không phải nút tăng nhạy trong Free Fire.':'Thử từng bước nhỏ và kiểm tra chữ, nút bấm, ứng dụng khác. Nếu khó thao tác, khôi phục mức cũ.';
+ $('dpiResult').classList.add('show');
+};
+$('saveOb').onclick=()=>{localStorage.setItem('dpi_ob_current',$('obCurrent').value.trim());$('obSaved').textContent=$('obCurrent').value.trim()?`Đã lưu phiên bản ${$('obCurrent').value.trim()} trên thiết bị.`:'Chưa ghi nhận phiên bản.';};
+const saved=localStorage.getItem('dpi_ob_current');if(saved){$('obCurrent').value=saved;$('obSaved').textContent=`Đã lưu phiên bản ${saved} trên thiết bị.`;}
+if('serviceWorker' in navigator && location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
+</script>
+</body></html>

@@ -1,0 +1,9 @@
+{
+  "name": "DPI CẬP NHẬT THEO TỪNG OB",
+  "short_name": "DPI THEO OB",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f5f8fc",
+  "theme_color": "#1769e8",
+  "description": "Công cụ tham khảo độ nhạy và DPI cho Free Fire."
+}
